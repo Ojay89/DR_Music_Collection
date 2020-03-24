@@ -2,14 +2,14 @@
 
 namespace DR_Music_Collection
 {
-    public class Music
+    public class MusicRecords
     {
         private int _id;
         private string _title;
         private string _artist;
         private string _album;
         private string _recordLabel;
-        private double _duration;
+        private int _durationInSeconds;
         private int _yearOfPublication;
 
 
@@ -30,31 +30,47 @@ namespace DR_Music_Collection
             }
         }
 
-        public string Artist //min 3 tegn - NOT NULL
+        public string Artist //min 2 tegn - NOT NULL
         {
             get { return _artist; }
             set
             {
                 if (value == null) throw new ArgumentNullException();
-                if (value.Length >= 3) _artist = value;
-                else throw new ArgumentException("Length must be more than 2 characters");
+                if (value.Length >= 2) _artist = value;
+                else throw new ArgumentException("Length must be at least 2 characters");
             }
         }
-        public string Album
+
+        public string Album //min 2 tegn - NOT NULL
         {
             get { return _album; }
-            set { _album = value; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                if (value.Length >= 2) _album = value;
+                else throw new ArgumentException("Length must be at least 2 characters");
+            }
         }
 
-        public string RecordLabel
+        public string RecordLabel //min 2 tegn - NOT NULL
         {
             get { return _recordLabel; }
-            set { _recordLabel = value; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                if (value.Length >= 2) _recordLabel = value;
+                else throw new ArgumentException("Length must be at least 2 characters");
+            }
         }
-        public double Duration
+
+        public int DurationInSeconds //over 5 sec
         {
-            get { return _duration; }
-            set { _duration = value; }
+            get { return _durationInSeconds; }
+            set
+            {
+                if (value > 60) _durationInSeconds = value;
+                else throw new ArgumentOutOfRangeException();
+            }
         }
 
         public int YearOfPublication //over år 0
@@ -67,18 +83,18 @@ namespace DR_Music_Collection
             }
         }
 
-        public Music(int Id, string Title, string Artist, string Album, string RecordLabel, double Duration, int YearOfPublication)
+        public MusicRecords(int Id, string Title, string Artist, string Album, string RecordLabel, int durationInSeconds, int YearOfPublication)
         {
             _id = Id;
             _title = Title;
             _artist = Artist;
             _album = Album;
             _recordLabel = RecordLabel;
-            _duration = Duration;
+            _durationInSeconds = DurationInSeconds;
             _yearOfPublication = YearOfPublication;
         }
 
-        public Music()
+        public MusicRecords()
         {
 
         }
@@ -86,7 +102,7 @@ namespace DR_Music_Collection
         public override string ToString()
         {
             return "Id: " + "" + Id + "" + "Title: " + "" + Title + "" + "Artist: " + "" + Artist + "" + "Album: " + "" + Album + "" + "Recordlabel: " + "" + RecordLabel + "" + "Duration: " +
-                   "" + Duration + "" + "Year of publication: " + "" + YearOfPublication;
+                   "" + DurationInSeconds + "" + "Year of publication: " + "" + YearOfPublication;
         }
 
     }
