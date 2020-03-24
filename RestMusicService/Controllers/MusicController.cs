@@ -29,12 +29,12 @@ namespace RestMusicService.Controllers
             return musicList;
         }
 
-        //// GET: api/Music/5
-        //[HttpGet("{id}", Name = "Get")]
-        //public Music Get(int id)
-        //{
-        //    return musicList.Find(i => i.Id == id);
-        //}
+        // GET: api/Music/5
+        [HttpGet("{id}", Name = "Get")]
+        public MusicRecords Get(int id)
+        {
+            return musicList.Find(i => i.Id == id);
+        }
 
         // POST: api/Music
         [HttpPost]
