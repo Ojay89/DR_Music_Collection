@@ -24,12 +24,16 @@ namespace DR_Music_Collection
             set { _title = value; }
         }
 
-        public string Artist
+        public string Artist //min 3 tegn - NOT NULL
         {
             get { return _artist; }
-            set { _artist = value; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                if (value.Length >= 3) _artist = value;
+                else throw new ArgumentException("Length must be more than 2 characters");
+            }
         }
-
         public string Album
         {
             get { return _album; }
@@ -47,10 +51,14 @@ namespace DR_Music_Collection
             set { _duration = value; }
         }
 
-        public int YearOfPublication
+        public int YearOfPublication //over år 0
         {
             get { return _yearOfPublication; }
-            set { _yearOfPublication = value; }
+            set
+            {
+                if (value > 0) _yearOfPublication = value;
+                else throw new ArgumentOutOfRangeException();
+            }
         }
 
         public Music(int Id, string Title, string Artist, string Album, string RecordLabel, double Duration, int YearOfPublication)
