@@ -83,7 +83,7 @@ namespace DR_Music_Collection
             }
         }
 
-        public MusicRecords(int Id, string Title, string Artist, string Album, string RecordLabel, int durationInSeconds, int YearOfPublication)
+        public MusicRecords(int Id, string Title, string Artist, string Album, string RecordLabel, int DurationInSeconds, int YearOfPublication)
         {
             _id = Id;
             _title = Title;
