@@ -11,13 +11,13 @@ namespace DR_Music_Collection.MusicTest
     [TestClass()]
     public class MusicTests
     {
-        private Music _testMusic;
+        private MusicRecords _testMusic;
         private MusicController _testMusicController;
 
         [TestInitialize]
         public void InitTestMusic()
         {
-            _testMusic = new Music(10, "12Novembervej", "12Nik & Jay", "12Novembervej", "12Nik & Jay Records", 31.10, 20110);
+            _testMusic = new MusicRecords(100, "Novembervej", "Nik & Jay", "Novembervej", "Nik & Jay Records", 68, 2010);
             _testMusicController = new MusicController();
         }
 

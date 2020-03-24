@@ -63,7 +63,7 @@ namespace DR_Music_Collection
             }
         }
 
-        public int DurationInSeconds //over 5 sec
+        public int DurationInSeconds //over 60 sec
         {
             get { return _durationInSeconds; }
             set

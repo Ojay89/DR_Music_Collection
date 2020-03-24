@@ -12,19 +12,19 @@ namespace RestMusicService.Controllers
     [ApiController]
     public class MusicController : ControllerBase
     {
-        private static readonly List<Music> musicList = new List<Music>()
+        private static readonly List<MusicRecords> musicList = new List<MusicRecords>()
         {
-            new Music(1, "Novembervej", "Nik & Jay", "Novembervej", "Nik & Jay Records", 3.10, 2010),
-            new Music(2, "You're Not There", "Lukas Graham", "Lukas Graham (Blue Album)", "Copenhagen Records", 3.21, 2015),
-            new Music(3, "Famous", "Kanye West", "The Life of Pablp", "UMG Records", 3.16, 2016),
-            new Music(4, "Helwa", "Gili", "Helwa the Album", "OO Productions", 2.59, 2018),
-            new Music(5, "I love you baby", "Frank Sinatra", "Frankie & Friends", "Fankiestein", 4.17, 1989),
-            new Music(6, "Dance Monkey","Tones and I","Dance Monkey", "Sony Productions", 3.27, 2020)
+            new MusicRecords(1, "Novembervej", "Nik & Jay", "Novembervej", "Nik & Jay Records", 120, 2010),
+            new MusicRecords(2, "You're Not There", "Lukas Graham", "Lukas Graham (Blue Album)", "Copenhagen Records", 230, 2015),
+            new MusicRecords(3, "Famous", "Kanye West", "The Life of Pablp", "UMG Records", 158, 2016),
+            new MusicRecords(4, "Helwa", "Gili", "Helwa the Album", "OO Productions", 176, 2018),
+            new MusicRecords(5, "I love you baby", "Frank Sinatra", "Frankie & Friends", "Fankiestein", 148, 1989),
+            new MusicRecords(6, "Dance Monkey","Tones and I","Dance Monkey", "Sony Productions", 196, 2020)
         };
 
         // GET: api/Music
         [HttpGet]
-        public IEnumerable<Music> Get()
+        public IEnumerable<MusicRecords> Get()
         {
             return musicList;
         }
@@ -38,7 +38,7 @@ namespace RestMusicService.Controllers
 
         // POST: api/Music
         [HttpPost]
-        public void Post([FromBody] Music value)
+        public void Post([FromBody] MusicRecords value)
         {
             musicList.Add(value);
         }
