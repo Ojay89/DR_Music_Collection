@@ -28,5 +28,21 @@ namespace DR_Music_Collection.MusicTest
             Assert.AreEqual(6,musicCount);
         }
 
+        [TestMethod()]
+        public void TestGetOneID()
+        {
+            _testMusic = _testMusicController.Get(1);
+            Assert.AreEqual(1, _testMusic.Id);
+        }
+
+        [TestMethod()]
+        public void TestGetOneTitle()
+        {
+            _testMusic = _testMusicController.Get(1);
+            Assert.AreEqual("Novembervej", _testMusic.Title);
+        }
+
+
+
     }
 }

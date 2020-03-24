@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DR_Music_CollectionMusicTes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DR_Records_UI_TEST", "DR_Records_UI_TEST\DR_Records_UI_TEST.csproj", "{5AF1667F-FDA0-49FC-A50C-B7DB00F5B597}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestMusicService_Memory_Database", "RestMusicService_Memory_Database\RestMusicService_Memory_Database.csproj", "{70E6074D-3F9D-4B53-AB98-44DA279723C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5AF1667F-FDA0-49FC-A50C-B7DB00F5B597}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AF1667F-FDA0-49FC-A50C-B7DB00F5B597}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AF1667F-FDA0-49FC-A50C-B7DB00F5B597}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70E6074D-3F9D-4B53-AB98-44DA279723C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70E6074D-3F9D-4B53-AB98-44DA279723C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70E6074D-3F9D-4B53-AB98-44DA279723C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70E6074D-3F9D-4B53-AB98-44DA279723C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
