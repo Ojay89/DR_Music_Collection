@@ -34,9 +34,7 @@ namespace DR_Records_UI_TEST
             _driver.Navigate().GoToUrl("http://localhost:3000/");
             string title = _driver.Title;
             Assert.AreEqual("DR", title);
-
         }
-
 
         [TestMethod]
         public void TestClickOnButtonAndGetData()
@@ -44,13 +42,10 @@ namespace DR_Records_UI_TEST
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
 
-            //IWebElement musicLst = _driver.FindElement(By.Id("musicList")); // No such element
-
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); // decorator pattern?
             IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
             //Assert.IsTrue(musicList.Text.Contains("1"));
-            Assert.IsTrue(musicList.Text.Contains("a"));
-
+            Assert.IsTrue(musicList.Text.Contains("Novembervej"));
         }
     }
 }
