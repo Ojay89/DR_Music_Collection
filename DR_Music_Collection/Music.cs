@@ -18,10 +18,16 @@ namespace DR_Music_Collection
             get { return _id; }
             set { _id = value; }
         }
-        public string Title
+
+        public string Title //min 1 tegn - NOT NULL
         {
             get { return _title; }
-            set { _title = value; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                if (value.Length >= 1) _title = value;
+                else throw new ArgumentException("Length must be at least one character");
+            }
         }
 
         public string Artist //min 3 tegn - NOT NULL
