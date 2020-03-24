@@ -38,21 +38,19 @@ namespace DR_Records_UI_TEST
         }
 
 
-        //MANGLER HJÆLP TIL UI TEST VED DEN NYE MÅDE AT VISE VORES JSON PÅ (FLOT TABEL)
+        [TestMethod]
+        public void TestClickOnButtonAndGetData()
+        {
+            IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
+            buttonElement.Click();
 
-        //[TestMethod] 
-        //public void TestClickOnButtonAndGetData()
-        //{
-        //    IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
-        //    buttonElement.Click();
+            //IWebElement musicLst = _driver.FindElement(By.Id("musicList")); // No such element
 
-        //    //IWebElement musicLst = _driver.FindElement(By.Id("musicList")); // No such element
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); // decorator pattern?
+            IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
+            //Assert.IsTrue(musicList.Text.Contains("1"));
+            Assert.IsTrue(musicList.Text.Contains("a"));
 
-        //    WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); // decorator pattern?
-        //    IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
-        //    //Assert.IsTrue(musicList.Text.Contains("1"));
-        //    Assert.IsTrue(musicList.Text.Contains("a"));
-
-        //}
+        }
     }
 }
