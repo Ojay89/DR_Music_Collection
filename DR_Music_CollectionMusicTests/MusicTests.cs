@@ -17,7 +17,7 @@ namespace DR_Music_Collection.MusicTest
         [TestInitialize]
         public void InitTestMusic()
         {
-            _testMusic = new MusicRecords(100, "Novembervej", "Nik & Jay", "Novembervej", "Nik & Jay Records", 68, 2010);
+            _testMusic = new MusicRecords(8, "UnitTest", "Test", "Test", "Test Records", 69, 2020);
             _testMusicController = new MusicController();
         }
 
@@ -45,9 +45,9 @@ namespace DR_Music_Collection.MusicTest
         [TestMethod()]
         public void TestPostMethod()
         {
-            Assert.Fail();
+            _testMusicController = new MusicController();
+            _testMusicController.Post(_testMusic);
+            Assert.AreEqual(8, _testMusic.Id);
         }
-
-
     }
 }
