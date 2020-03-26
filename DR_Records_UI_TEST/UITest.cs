@@ -2,12 +2,13 @@ using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 namespace DR_Records_UI_TEST
 {
     [TestClass]
-    public class UnitTest1
+    public class UITest
     {
         private static readonly string DriverDirectory = "C:\\seleniumDrivers";
         private static IWebDriver _driver;
