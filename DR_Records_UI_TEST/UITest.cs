@@ -18,6 +18,7 @@ namespace DR_Records_UI_TEST
         public static void Setup(TestContext context)
         {
             _driver = new ChromeDriver(DriverDirectory); // fast
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
             //_driver = new FirefoxDriver(DriverDirectory);  // slow
         }
 
@@ -30,7 +31,6 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestTitleOfPage()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3000/");
             string title = _driver.Title;
             Assert.AreEqual("DR", title);
 
@@ -74,6 +74,7 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestAddFunction()
         {
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
