@@ -42,6 +42,11 @@ namespace DR_Music_Collection.MusicTest
             Assert.AreEqual("Novembervej", _testMusic.Title);
         }
 
+        [TestMethod()]
+        public void TestPostMethod()
+        {
+            Assert.Fail();
+        }
 
 
     }
