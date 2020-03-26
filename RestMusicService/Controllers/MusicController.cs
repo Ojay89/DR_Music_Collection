@@ -43,9 +43,13 @@ namespace RestMusicService.Controllers
             musicList.Add(value);
         }
 
-
-
-
+        //DELETE: api/ApiWithActions/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            MusicRecords music = Get(id);
+            musicList.Remove(music);
+        }
 
         //// PUT: api/Music/5
         //[HttpPut("{id}")]
@@ -62,14 +66,6 @@ namespace RestMusicService.Controllers
         //        music.RecordLabel = value.RecordLabel;
         //        music.YearOfPublication = value.YearOfPublication;
         //    }
-        //}
-
-        // DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //    Music music = Get(id);
-        //    musicList.Remove(music);
         //}
 
     }
