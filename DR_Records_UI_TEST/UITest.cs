@@ -31,7 +31,6 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestTitleOfPage()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3000/");
             string title = _driver.Title;
             Assert.AreEqual("DR", title);
 
@@ -42,7 +41,6 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestClickOnButtonAndGetData()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3000/");
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); 
@@ -58,7 +56,6 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestSearchFunction()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3000/");
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); 
@@ -77,7 +74,7 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestAddFunction()
         {
-            _driver.Navigate().GoToUrl("http://localhost:3000/");
+            //_driver.Navigate().GoToUrl("http://localhost:3000/");
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
@@ -115,12 +112,21 @@ namespace DR_Records_UI_TEST
 
             IWebElement addRecordButton = _driver.FindElement(By.Id("addButton"));
             addRecordButton.Click(); //Tilføjer sang til listen
+
             addRecordButton.SendKeys("{F5}");
+
+
+
             //Bliver nødt til at refreshe siden og gå igennem de første steps igen
+            WebDriverWait waitAgainAfterRefresh = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+            IWebElement musicListwait = wait.Until(d => d.FindElement(By.Id("MusicList")));
+
+
 
             IWebElement buttonElementAgain = _driver.FindElement(By.Id("getAllButton"));
             buttonElementAgain.Click();
             WebDriverWait waitAgain = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+
 
             IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
             Assert.IsTrue(musicList.Text.Contains("UItest"));

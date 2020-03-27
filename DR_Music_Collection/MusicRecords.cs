@@ -16,7 +16,14 @@ namespace DR_Music_Collection
         public int Id
         {
             get { return _id; }
-            set { _id = value; }
+            set
+            {
+                if (value == null) throw new ArgumentNullException();
+                {
+                    
+                }
+                _id = value;
+            }
         }
 
         public string Title //min 1 tegn - NOT NULL
