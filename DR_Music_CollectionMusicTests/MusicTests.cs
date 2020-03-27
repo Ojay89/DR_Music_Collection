@@ -25,7 +25,7 @@ namespace DR_Music_Collection.MusicTest
         public void TestGetAll()
         {
             int musicCount = _testMusicController.Get().Count();
-            Assert.AreEqual(6,musicCount);
+            Assert.AreEqual(6, musicCount);
         }
 
         [TestMethod()]
@@ -48,6 +48,25 @@ namespace DR_Music_Collection.MusicTest
             _testMusicController = new MusicController();
             _testMusicController.Post(_testMusic);
             Assert.AreEqual(8, _testMusic.Id);
+        }
+
+        [TestMethod()]
+        public void TestDeleteMethod()
+        {
+            MusicRecords mr1 = new MusicRecords(200, "DeleteTest", "DeleteTest", "DeleteTest", "DeleteTest", 200, 2020);
+            _testMusicController.Post(mr1);
+
+            _testMusicController = new MusicController();
+            int musicCount = _testMusicController.Get().Count();
+            Assert.AreEqual(7,musicCount);
+
+            _testMusicController.Delete(200);
+            Assert.AreEqual(6, musicCount);
+
+
+            //Assert.AreEqual(200, mr1.Id);
+
+
         }
     }
 }
