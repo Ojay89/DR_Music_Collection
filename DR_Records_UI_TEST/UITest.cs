@@ -74,7 +74,7 @@ namespace DR_Records_UI_TEST
         [TestMethod]
         public void TestAddFunction()
         {
-            //_driver.Navigate().GoToUrl("http://localhost:3000/");
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));

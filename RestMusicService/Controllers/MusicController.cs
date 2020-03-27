@@ -40,7 +40,9 @@ namespace RestMusicService.Controllers
         [HttpPost]
         public void Post([FromBody] MusicRecords value)
         {
-            musicList.Add(value);
+            MusicRecords newRecord = Get(value.Id);
+            if (newRecord == null)
+                musicList.Add(value);
         }
 
         //DELETE: api/ApiWithActions/5
@@ -51,22 +53,22 @@ namespace RestMusicService.Controllers
             musicList.Remove(music);
         }
 
-        //// PUT: api/Music/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] Music value)
-        //{
-        //    Music music = Get(id);
-        //    if (music != null)
-        //    {
-        //        music.Id = value.Id;
-        //        music.Title = value.Title;
-        //        music.Artist = value.Artist;
-        //        music.Album = value.Album;
-        //        music.Duration = value.Duration;
-        //        music.RecordLabel = value.RecordLabel;
-        //        music.YearOfPublication = value.YearOfPublication;
-        //    }
-        //}
+        // PUT: api/Music/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] MusicRecords value)
+        {
+            MusicRecords music = Get(id);
+            if (music != null)
+            {
+                music.Id = value.Id;
+                music.Title = value.Title;
+                music.Artist = value.Artist;
+                music.Album = value.Album;
+                music.DurationInSeconds = value.DurationInSeconds;
+                music.RecordLabel = value.RecordLabel;
+                music.YearOfPublication = value.YearOfPublication;
+            }
+        }
 
     }
 }
