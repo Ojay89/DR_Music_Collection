@@ -43,7 +43,7 @@ namespace DR_Records_UI_TEST
         {
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); 
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
             IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
             //Assert.IsTrue(musicList.Text.Contains("1"));
@@ -58,7 +58,7 @@ namespace DR_Records_UI_TEST
         {
             IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
             buttonElement.Click();
-            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20)); 
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
             IWebElement input = _driver.FindElement(By.Id("myInput"));
             input.Click();
@@ -115,8 +115,6 @@ namespace DR_Records_UI_TEST
 
             addRecordButton.SendKeys("{F5}");
 
-
-
             //Bliver nødt til at refreshe siden og gå igennem de første steps igen
             WebDriverWait waitAgainAfterRefresh = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
             IWebElement musicListwait = wait.Until(d => d.FindElement(By.Id("MusicList")));
@@ -133,6 +131,39 @@ namespace DR_Records_UI_TEST
 
             //Chrome OK FAST
             //Firefox OK SLOW
+        }
+
+        [TestMethod]
+        public void TestDeleteFunction()
+        {
+            _driver.Navigate().GoToUrl("http://localhost:3000/");
+            IWebElement buttonElement = _driver.FindElement(By.Id("getAllButton"));
+            buttonElement.Click();
+            WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+
+            IWebElement clickHereDeleteButton = _driver.FindElement(By.Id("clickHereDeleteButton"));
+            clickHereDeleteButton.Click();
+
+            IWebElement inputDelete = _driver.FindElement(By.Id("deleteInput"));
+            inputDelete.Click();
+            inputDelete.SendKeys("6"); //Sletter sang med id #6
+            IWebElement inputDeleteButton = _driver.FindElement(By.Id("deleteButton"));
+            inputDeleteButton.Click();
+
+            //Bliver nødt til at refreshe side for at få listen frem igen uden errors
+            inputDeleteButton.SendKeys("{F5}");
+
+            //Kører liste igennem igen for at lede efter sang med id #6 - den skal være slettet
+            IWebElement buttonElementAgain = _driver.FindElement(By.Id("getAllButton"));
+            buttonElementAgain.Click();
+            WebDriverWait waitAgain = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
+
+            IWebElement musicList = wait.Until(d => d.FindElement(By.Id("MusicList")));
+            Assert.IsFalse(musicList.Text.Contains("Dance Monkey"));
+
+            //Chrome OK FAST
+            //Firefox OK SLOW
+
         }
     }
 }
