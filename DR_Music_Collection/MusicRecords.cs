@@ -16,7 +16,7 @@ namespace DR_Music_Collection
         public int Id
         {
             get { return _id; }
-            set { _id = value; }
+            set { _id = value; } //Contraint i Musikcontroller, da Model ikke kan kigge igennem en liste.
         }
 
         public string Title //min 1 tegn - NOT NULL

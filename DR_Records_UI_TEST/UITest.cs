@@ -116,13 +116,10 @@ namespace DR_Records_UI_TEST
             addRecordButton.SendKeys("{F5}");
 
             //Bliver nødt til at refreshe siden og gå igennem de første steps igen
-            WebDriverWait waitAgainAfterRefresh = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
-            IWebElement musicListwait = wait.Until(d => d.FindElement(By.Id("MusicList")));
-
-
-
+            
             IWebElement buttonElementAgain = _driver.FindElement(By.Id("getAllButton"));
             buttonElementAgain.Click();
+            
             WebDriverWait waitAgain = new WebDriverWait(_driver, TimeSpan.FromSeconds(20));
 
 
