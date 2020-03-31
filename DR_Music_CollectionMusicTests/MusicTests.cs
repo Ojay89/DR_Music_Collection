@@ -17,8 +17,8 @@ namespace DR_Music_Collection.MusicTest
         [TestInitialize]
         public void InitTestMusic()
         {
-            _testMusic = new MusicRecords(8, "UnitTest", "Test", "Test", "Test Records", 69, 2020);
             _testMusicController = new MusicController();
+            _testMusic = new MusicRecords(8, "UnitTest", "Test", "Test", "Test Records", 69, 2020);
         }
 
         [TestMethod()]
@@ -45,7 +45,6 @@ namespace DR_Music_Collection.MusicTest
         [TestMethod()]
         public void TestPostMethod()
         {
-            _testMusicController = new MusicController();
             _testMusicController.Post(_testMusic);
             Assert.AreEqual(8, _testMusic.Id);
         }
@@ -53,15 +52,19 @@ namespace DR_Music_Collection.MusicTest
         [TestMethod()]
         public void TestDeleteMethod()
         {
-            //MusicRecords mr1 = new MusicRecords(200, "DeleteTest", "DeleteTest", "DeleteTest", "DeleteTest", 200, 2020);
-            //_testMusicController.Post(mr1);
+           
+            int musicCount = _testMusicController.Get().Count();
+            int expectedMusicCount = musicCount + 1;
 
-            //_testMusicController = new MusicController();
-            //int musicCount = _testMusicController.Get().Count();
-            //Assert.AreEqual(7, musicCount);
+            MusicRecords mr1 = new MusicRecords(200, "DeleteTest", "DeleteTest", "DeleteTest", "DeleteTest", 200, 2020);
+            _testMusicController.Post(mr1);
 
-            //_testMusicController.Delete(200);
-            //Assert.AreEqual(6, musicCount);
+            Assert.AreEqual(_testMusicController.Get().Count(), expectedMusicCount);
+
+            int expectedMusicCountAfter = _testMusicController.Get().Count() - 1;
+
+            _testMusicController.Delete(200);
+            Assert.AreEqual(_testMusicController.Get().Count(), expectedMusicCountAfter);
 
             //Assert.AreEqual(200, mr1.Id);
         }
@@ -69,12 +72,12 @@ namespace DR_Music_Collection.MusicTest
         [TestMethod()]
         public void TestPutMethod()
         {
-            MusicRecords mr1 = new MusicRecords(200, "PutTest", "PutTest", "PutTest", "PutTest", 200, 2020);
+            //MusicRecords mr1 = new MusicRecords(200, "PutTest", "PutTest", "PutTest", "PutTest", 200, 2020);
 
-            //_testMusicController.Put(300,mr1);
-            _testMusicController.Put(300, new MusicRecords(300, "PutTestAfter", "PutTestAfter", "PutTestAfter", "PutTestAfter",300,2021));
+            ////_testMusicController.Put(300,mr1);
+            //_testMusicController.Put(300, new MusicRecords(300, "PutTestAfter", "PutTestAfter", "PutTestAfter", "PutTestAfter",300,2021));
 
-            Assert.AreEqual(300, mr1.Id);
+            //Assert.AreEqual(300, mr1.Id);
 
 
         }
