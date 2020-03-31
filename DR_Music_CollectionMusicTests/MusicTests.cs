@@ -72,12 +72,15 @@ namespace DR_Music_Collection.MusicTest
         [TestMethod()]
         public void TestPutMethod()
         {
-            //MusicRecords mr1 = new MusicRecords(200, "PutTest", "PutTest", "PutTest", "PutTest", 200, 2020);
 
-            ////_testMusicController.Put(300,mr1);
-            //_testMusicController.Put(300, new MusicRecords(300, "PutTestAfter", "PutTestAfter", "PutTestAfter", "PutTestAfter",300,2021));
 
-            //Assert.AreEqual(300, mr1.Id);
+            MusicRecords mr1 = new MusicRecords(500, "PutTest", "PutTest", "PutTest", "PutTest", 200, 2020);
+            _testMusicController.Post(mr1);
+
+            //_testMusicController.Put(500, mr1);
+            _testMusicController.Put(500, new MusicRecords(500, "PutTestAfter", "PutTestAfter", "PutTestAfter", "PutTestAfter", 300, 2021));
+
+            Assert.AreEqual("PutTestAfter", mr1.Title);
 
 
         }
