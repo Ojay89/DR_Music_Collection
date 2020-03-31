@@ -69,6 +69,5 @@ namespace RestMusicService.Controllers
                 music.YearOfPublication = value.YearOfPublication;
             }
         }
-
     }
 }
